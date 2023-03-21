@@ -1,4 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:timer_app/timer_screen.dart';
+
+import 'cubit/timer_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      home: BlocProvider(
+        create: (context) => TimerCubit(),
+        child: TimerScreen(),
+      ),
     );
   }
 }
